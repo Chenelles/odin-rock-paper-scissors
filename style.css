@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Orbitron:wght@300;400;500;700;900&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --gradient: linear-gradient(
+        180deg,
+        black 35%,
+        rgb(70, 5, 57)
+    );
+    --clr-neon: hsl(317 100% 54%);
+}
+
+@keyframes h1-animation {
+    30% {
+        text-shadow: 0 0 0.25em hsl(317 100% 54%),
+        0 0 0.125em hsl(0 0% 100% / 0.5);
+    }
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 
+        0.05em 0 0 rgba(255,0,0,.75),
+        -0.05em -0.025em 0 rgba(0,255,0,.75),
+        -0.025em 0.05em 0 rgba(0,0,255,.75);
+    }
+    14% {
+        text-shadow: 
+        0.05em 0 0 rgba(255,0,0,.75),
+        -0.05em -0.025em 0 rgba(0,255,0,.75),
+        -0.025em 0.05em 0 rgba(0,0,255,.75);
+    }
+    15% {
+        text-shadow: 
+        -0.05em -0.025em 0 rgba(255,0,0,.75),
+        0.025em 0.025em 0 rgba(0,255,0,.75),
+        -0.05em -0.05em 0 rgba(0,0,255,.75);
+    }
+    49% {
+        text-shadow: 
+        -0.05em -0.025em 0 rgba(255,0,0,.75),
+        0.025em 0.025em 0 rgba(0,255,0,.75),
+        -0.05em -0.05em 0 rgba(0,0,255,.75);
+    }
+    50% {
+        text-shadow: 
+        0.025em 0.05em 0 rgba(255,0,0,.75),
+        0.05em 0 0 rgba(0,255,0,.75),
+        0 -0.05em 0 rgba(0,0,255,.75);
+    }
+    99% {
+        text-shadow: 
+        0.025em 0.05em 0 rgba(255,0,0,.75),
+        0.05em 0 0 rgba(0,255,0,.75),
+        0 -0.05em 0 rgba(0,0,255,.75);
+    }
+    100% {
+        text-shadow: 
+        -0.025em 0 0 rgba(255,0,0,.75),
+        -0.025em -0.025em 0 rgba(0,255,0,.75),
+        -0.025em -0.05em 0 rgba(0,0,255,.75);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25em;
+    font-family: 'DotGothic16', sans-serif;
+    min-height: 100vh;
+    background-image: var(--gradient);
+    background-size: 400%;
+    color: white;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    align-items: center;
+    margin-top: 1.5em;
+    animation: fade-in 300ms forwards;
+}
+
+main.disappear {
+    display: none;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 900;
+    padding: 0.5em;
+    border: solid 0.5em hsl(317 100% 54%);
+    border-radius: 1em;
+    box-shadow: 0 0 1em 0 hsla(312, 84%, 73%, 0.75),
+    inset 0 0 0.25em 0 hsla(312, 84%, 73%, 0.75);
+    font-family: 'Orbitron', sans-serif;
+    animation: h1-animation 4s infinite;
+}
+
+p {
+    font-size: 2em;
+    font-weight: 500;
+    text-shadow: 0 0 0.1em white;
+}
+
+h2 {
+    font-size: 2em;
+    letter-spacing: 0.2em;
+    text-shadow: 0 0 0.1em rgb(255,255,92);
+    color: rgb(255, 255, 92);
+}
+
+.buttons {
+    display: flex;
+    gap: 3em;
+}
+
+.weapons {
+    width: 250px;
+    height: 250px;
+    padding: 2.5em;
+    border: var(--clr-neon) 4px solid;
+    border-radius: 15px;
+    background-color: black;
+    cursor: pointer;
+    box-shadow: 0 0 1em 0 var(--clr-neon),
+    inset 0 0 1em 0 var(--clr-neon);
+    position: relative;
+    transition: background-color 100ms linear;
+}
+
+.weapons::before {
+    pointer-events: none;
+    content: '';
+    position: absolute;
+    background: var(--clr-neon);
+    top: 110%;
+    left: 0;
+    width: 100%;
+    height: 15%;
+    transform: perspective(2em) rotateX(40deg) scale(1.2, 0.35);
+    filter: blur(1em);
+    opacity: 0.5;
+}
+
+.weapons::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    opacity: 0;
+    transition: opacity 100ms linear;
+}
+
+.weapons:hover::before,
+.weapons:focus::before {
+    opacity: 1;
+}
+
+.weapons:hover::after,
+.weapons:focus::after {
+    opacity: 1;
+}
+
+.weapons:hover {
+    background-color: var(--clr-neon);
+}
+
+
+img {
+    width: 100%;
+}
+
+.score-board {
+    padding: 1.25em;
+    display: flex;
+    gap: 0.5em;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score {
+    margin-top: 1.5em;
+    padding: 0.1em 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.score-labels {
+    display: flex;
+    gap: 1.25em;
+}
+
+.wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    align-items: center;
+    padding: 0.5em;
+}
+
+.comments {
+    font-size: 1.5em;
+}
+
+.comments::before,
+.comments::after {
+    content: url(icons/gaming-console.png);
+    display: inline-block;
+    text-align: center;
+    padding: 1em;
+}
+
+.end-game {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 100vh;
+    display: none;
+}
+
+.end-game.active {
+    display: flex;
+    animation: fade-in 300ms forwards;
+}
+
+.gameover {
+    font-size: 6em;
+    color: white;
+    text-shadow: 
+    0.05em 0 0 rgba(255,0,0,.75),
+    -0.025em -0.05em 0 rgba(0,255,0,.75),
+    0.025em 0.05em 0 rgba(0,0,255,.75);
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    text-align: center;
+    animation: glitch 750ms infinite;
+}
+
+#result {
+    color: rgb(255,255,92);
+    font-size: 2em;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+}
+
+#restart-btn {
+    padding: 1em 2em;
+    border: solid 0.2em white;
+    border-radius: 8px;
+    color: white;
+    font-size: 1em;
+    background-color: black;
+    font-weight: bolder;
+    font-family: 'DotGothic16', sans-serif;
+    letter-spacing: 0.2em;
+    transition: background-color 100ms linear;
+}
+
+#restart-btn:hover,
+#restart-btn:focus {
+    cursor: pointer;
+    box-shadow: 0 0 1em 0 white,
+    inset 0 0 1em 0 white;
+    background-color: white;
+    color: black;
+}

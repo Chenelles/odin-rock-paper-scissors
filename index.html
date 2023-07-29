@@ -2,8 +2,47 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rock - Paper - Scissors</title>
-        <script src="js/script.js"></script>
+        <script src="js/script2.js" defer></script>
+        <link rel="stylesheet" href="style.css">
     </head>
-    <body></body>
+    <body>
+        <header>
+            <h1>Rock - Paper - Scissors</h1>
+        </header>
+        <main>
+            <p>First to 5 wins!</p>
+            <h2>Choose your weapon:</h2>
+            <div class="buttons">
+                <button id="rock" class="weapons"><img src="icons/stone.png" alt="rock"></button>
+                <audio id="rock-sound" src="Sounds/rock-mp3.mp3" type="audio/mpeg"></audio>
+                <button id="paper" class="weapons"><img src="icons/paper.png" alt="paper"></button>
+                <audio id="paper-sound" src="Sounds/paper-mp3.mp3" type="audio/mpeg"></audio>
+                <button id="scissors" class="weapons"><img src="icons/scissors.png" alt="scissors"></button>
+                <audio id="scissors-sound" src="Sounds/scissors-mp3.mp3" type="audio/mpeg"></audio>
+            </div>
+            <div class="score-board">
+                <h2 class="score">Score:</h2>
+                <div class="score-labels">
+                    <div class="wrap">
+                        <p class="player">You</p>
+                        <p id="player-score" class="player">0</p>
+                    </div>
+                    <div class="wrap">
+                        <p class="computer">Computer</p>
+                        <p id="computer-score" class="computer">0</p>
+                    </div>
+                </div>
+                <p class="comments">Let's play!</p>
+            </div>
+        </main>
+        <div class="end-game">
+            <audio id="game-over-sound" src="Sounds/game-over.mp3" type="audio/mpeg"></audio>
+            <audio id="game-win-sound" src="Sounds/game-win.mp3" type="audio/mpeg"></audio>
+            <p class="gameover">GAME OVER!</p>
+            <p id="result">You won!</p>
+            <button id="restart-btn">Try again?</button>
+        </div>
+    </body>
 </html>
